@@ -13,12 +13,13 @@ modals.forEach(function (trigger) {
 			});
 		});
 	});
+});
 
-	trigger.addEventListener('keydown', function (event) {
-		let keyCode = event.keyCode;
-		if (keyCode === 27) {
-			const modal = document.getElementById(trigger.dataset.modal);
-			modal.classList.remove('open');
-		}
-	});
+const modal = document.getElementById('modal');
+document.addEventListener('keydown', function (event) {
+	let isOpen = modal.classList.contains('open');
+	let keyCode = event.keyCode;
+	if (keyCode === 27 && isOpen) {
+		modal.classList.remove('open');
+	}
 });
